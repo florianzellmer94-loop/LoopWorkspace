@@ -52,7 +52,7 @@ platform :ios do
     )      
     
     match(
-      type: "appstore",
+      type: "adhoc",
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
       app_identifier: [
         "com.#{TEAMID}.loopkit.Loop", 
@@ -117,7 +117,7 @@ platform :ios do
     )
 
     gym(
-      export_method: "app-store",
+      export_method: "ad-hoc",
       scheme: "LoopWorkspace",
       output_name: "Loop.ipa",
       configuration: "Release",
@@ -139,12 +139,12 @@ platform :ios do
       key_content: "#{FASTLANE_KEY}"
     )
     
-    upload_to_testflight(
-      api_key: api_key,
-      skip_submission: false,
-      ipa: "Loop.ipa",
-      skip_waiting_for_build_processing: true,
-    )
+    # upload_to_testflight(
+      # api_key: api_key,
+      # skip_submission: false,
+      # ipa: "Loop.ipa",
+      # skip_waiting_for_build_processing: true,
+   #  )
   end
 
   desc "Provision Identifiers and Certificates"
@@ -211,7 +211,7 @@ platform :ios do
     )
     
     match(
-      type: "appstore",
+      type: "adhoc",
       force: false,
       verbose: true,
       git_basic_authorization: Base64.strict_encode64("#{GITHUB_REPOSITORY_OWNER}:#{GH_PAT}"),
